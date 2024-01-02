@@ -1,23 +1,14 @@
-import Footer from './components/Footer'
-import Header from './components/Header'
-import Main from './components/Main'
+import MobileNav from './components/MobileNav'
+import useScreenMonitor from './assets/hooks/useScreenMonitor'
 import Nav from './components/Nav'
+import Header from './components/Header'
 
 export default function App() {
+  const mobile = useScreenMonitor()
+
   return (
     <>
-      <Header>
-        <>Header</>
-      </Header>
-      <Nav>
-        <>Nav</>
-      </Nav>
-      <Main>
-        <>Main</>
-      </Main>
-      <Footer>
-        <>Footer</>
-      </Footer>
+      <Header>{mobile ? <MobileNav /> : <Nav />}</Header>
     </>
   )
 }

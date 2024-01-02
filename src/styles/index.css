@@ -10,6 +10,12 @@ body {
   font-size: 1.6rem;
 }
 
+@layer utilities {
+  .content-container {
+    @apply w-full max-w-[86rem] mx-auto;
+  }
+}
+
 @layer components {
   .text-subtitle {
     @apply text-[4rem] font-serif;

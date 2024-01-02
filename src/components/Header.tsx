@@ -1,3 +1,3 @@
-export default function Header({ children }: { children: JSX.Element }) {
-  return <header>{children}</header>
+export default function Header({ children }: { children: React.ReactNode }) {
+  return <header className='header relative'>{children}</header>
 }
