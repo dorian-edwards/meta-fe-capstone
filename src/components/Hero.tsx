@@ -11,15 +11,14 @@ export default function Hero() {
             Little Lemon
           </h1>
           <h3 className='text-subtitle text-white mb-[2rem]'>Baltimore</h3>
-          <p className='text-lead text-white min-[560px]:max-w-[25rem] w-[75%] mb-[2rem]'>
+          <p className='text-lead text-white min-[560px]:max-w-[25rem] w-full max-w-[75%] mb-[2rem]'>
             {description}
           </p>
           <button className='text-lead bg-primary-yellow rounded-3xl py-[1rem] px-[2rem]'>
             Reserve a Table
           </button>
         </div>
-
-        <div className='hero-image-wrapper w-[45%] relative max-[559px]:hidden'>
+        <div className='hero-image-wrapper w-full relative max-[559px]:hidden'>
           <div className='img-wrapper absolute max-h-[450px] overflow-hidden rounded-3xl'>
             <img className='' src={food} alt='' />
           </div>
