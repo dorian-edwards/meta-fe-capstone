@@ -19,6 +19,8 @@ export default {
       'secondary-light': '#FBDABB',
       'highlight-light': '#EDEFEE',
       'highlight-dark': '#333333',
+      black: '#000',
+      white: '#FFF',
     },
   },
   plugins: [],
