@@ -41,3 +41,11 @@ body {
     @apply text-[1.6rem] font-sans font-medium;
   }
 }
+
+/* Random */
+
+@media screen and (min-width: 560px) {
+  .specials-mobile {
+    display: none;
+  }
+}
