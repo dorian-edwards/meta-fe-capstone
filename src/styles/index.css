@@ -41,3 +41,22 @@ body {
     @apply text-[1.6rem] font-sans font-medium;
   }
 }
+
+/* Random */
+
+@media screen and (min-width: 560px) {
+  .specials-mobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 940px) {
+  .specials-list {
+    flex-direction: row;
+  }
+
+  .specials-list p,
+  .specials-list button {
+    width: 100%;
+  }
+}

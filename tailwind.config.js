@@ -14,6 +14,7 @@ export default {
     },
     colors: {
       'primary-green': '#495E57',
+      'primary-green-faded': 'rgba(73,94,87,0.5)',
       'primary-yellow': '#F4CE14',
       'secondary-dark': '#EE9972',
       'secondary-light': '#FBDABB',
