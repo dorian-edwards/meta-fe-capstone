@@ -26,7 +26,7 @@ export default function MenuItemCard({
         </p>
         <button
           type='button'
-          className='flex gap-x-[0.75rem] bg-primary-green text-highlight-light py-[0.5rem] px-[1rem] rounded-md active:scale-[1.1] transition-transform duration-100'
+          className='order-delivery-btn flex gap-x-[0.75rem] bg-primary-green text-highlight-light py-[0.5rem] px-[1rem] rounded-md active:scale-[1.1] transition-transform duration-100 max-w-[175px]'
         >
           Order Delivery
           <Scooter />
