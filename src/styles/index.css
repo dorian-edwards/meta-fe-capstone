@@ -12,13 +12,17 @@ body {
 
 @layer utilities {
   .content-container {
-    @apply w-full max-w-[86rem] mx-auto;
+    @apply w-11/12 max-w-[86rem] mx-auto;
   }
 }
 
 @layer components {
+  .text-title {
+    @apply text-[4rem] md:text-[6.2rem]  font-serif leading-[0.75];
+  }
+
   .text-subtitle {
-    @apply text-[4rem] font-serif;
+    @apply text-[2.4rem] md:text-[4rem] font-serif leading-[0.75];
   }
 
   .text-lead {
