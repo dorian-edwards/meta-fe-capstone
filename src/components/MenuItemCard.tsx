@@ -10,7 +10,7 @@ export default function MenuItemCard({
 }: MenuItem) {
   return (
     <div
-      className='menu-item-card basis-1/3 grid grid-rows-[181px,auto,auto] bg-highlight-light max-w-[50rem] m-auto'
+      className='menu-item-card basis-1/3 grid grid-rows-[181px,auto,auto] bg-highlight-light max-w-[35rem] m-auto'
       role='presentation'
     >
       <div className='img-wrapper rounded-t-lg max-h-[18.6rem] overflow-hidden'>
