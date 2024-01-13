@@ -49,3 +49,14 @@ body {
     display: none;
   }
 }
+
+@media screen and (min-width: 940px) {
+  .specials-list {
+    flex-direction: row;
+  }
+
+  .specials-list p,
+  .specials-list button {
+    width: 100%;
+  }
+}

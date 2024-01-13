@@ -1,4 +1,3 @@
-import food from '../assets/images/restauranfood.jpg'
 import ButtonPrimary from './ButtonPrimary'
 
 export default function Hero() {
@@ -17,9 +16,13 @@ export default function Hero() {
           </p>
           <ButtonPrimary>Reserve a table</ButtonPrimary>
         </div>
-        <div className='hero-image-wrapper w-full relative max-[559px]:hidden'>
+        <div className='hero-image-wrapper w-full relative min-[940px]:right-[-4rem] max-[559px]:hidden'>
           <div className='img-wrapper absolute max-h-[450px] overflow-hidden rounded-3xl'>
-            <img className='' src={food} alt='' />
+            <img
+              className=''
+              src='/images/restauranfood.jpg'
+              alt='tray of food being held by a person in an apron'
+            />
           </div>
         </div>
       </div>
