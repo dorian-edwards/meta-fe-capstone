@@ -5,7 +5,7 @@ import Header from './components/Header'
 import Main from './components/Main'
 import Hero from './components/Hero'
 import Specials from './components/Specials'
-import Testimonials from './components/Testimonials'
+import Reviews from './components/Reviews'
 
 export default function App() {
   const mobile = useScreenMonitor()
@@ -16,7 +16,7 @@ export default function App() {
       <Main>
         <Hero />
         <Specials />
-        <Testimonials />
+        <Reviews />
       </Main>
     </>
   )
