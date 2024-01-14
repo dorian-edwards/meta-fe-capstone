@@ -10,6 +10,10 @@ body {
   font-size: 1.6rem;
 }
 
+.lock {
+  overflow-y: hidden;
+}
+
 @layer utilities {
   .content-container {
     @apply w-11/12 max-w-[86rem] mx-auto;

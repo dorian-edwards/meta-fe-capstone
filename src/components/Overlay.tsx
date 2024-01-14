@@ -15,8 +15,12 @@ export default function Overlay({
     }
 
     if (active) {
+      document.body.classList.add('lock')
       document.addEventListener('click', handleClick)
+    } else {
+      document.body.classList.remove('lock')
     }
+
     return () => document.removeEventListener('click', handleClick)
   }, [active, closeOverlay])
 
