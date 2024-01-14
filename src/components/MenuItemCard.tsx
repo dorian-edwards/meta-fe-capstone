@@ -19,7 +19,7 @@ export default function MenuItemCard({
       <div className='details-wrapper p-[2rem] pb-[3rem] rounded-b-md grid '>
         <div className='menu-item-card-heading flex justify-between'>
           <span className='text-card-title'>{name}</span>
-          <span className='text-highlight text-primary-yellow'>${price}</span>
+          <span className='text-highlight text-dark-yellow'>${price}</span>
         </div>
         <p className='description mb-[3rem] min-[750px]:w-full min-[940px]:h-[14.4rem] overflow-y-scroll'>
           {description}
