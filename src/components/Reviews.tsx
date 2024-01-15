@@ -1,11 +1,11 @@
 import ReviewCard from './ReviewCard'
 
-export default function Testimonials() {
+export default function Reviews() {
   return (
-    <section className='testimonials py-[10rem] bg-primary-green-faded'>
+    <section className='reviews py-[10rem] bg-primary-green-faded'>
       <div className='content-container'>
         <h2 className='text-title text-center mb-[6rem]'>Reviews</h2>
-        <div className='testimonial-card-wrapper flex flex-wrap justify-center items-center gap-10'>
+        <div className='review-card-wrapper flex flex-wrap justify-center items-center gap-10'>
           <ReviewCard
             rating={'\u2b50\u2b50\u2b50\u2b50'}
             name='Keisha'
