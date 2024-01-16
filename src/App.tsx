@@ -6,6 +6,8 @@ import Main from './components/Main'
 import Hero from './components/Hero'
 import Specials from './components/Specials'
 import Reviews from './components/Reviews'
+import About from './components/About'
+import Footer from './components/Footer'
 
 export default function App() {
   const mobile = useScreenMonitor()
@@ -17,6 +19,8 @@ export default function App() {
         <Hero />
         <Specials />
         <Reviews />
+        <About />
+        <Footer />
       </Main>
     </>
   )
