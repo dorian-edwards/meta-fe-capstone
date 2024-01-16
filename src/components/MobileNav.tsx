@@ -9,9 +9,12 @@ export default function MobileNav() {
 
   return (
     <>
-      <div className='mobile-nav-container h-[6rem] flex justify-between gap-x-[2rem] items-center px-[2.4rem]'>
+      <div className='mobile-nav-container h-[6rem] flex justify-between items-center px-[2.4rem]'>
         <NavLogo />
-        <button onClick={() => setMenuActive((prevState) => !prevState)}>
+        <button
+          onClick={() => setMenuActive((prevState) => !prevState)}
+          aria-label='menu'
+        >
           <HamburgerIcon />
         </button>
       </div>
