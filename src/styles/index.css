@@ -14,6 +14,10 @@ body {
   overflow-y: hidden;
 }
 
+em {
+  font-style: italic;
+}
+
 @layer utilities {
   .content-container {
     @apply w-11/12 max-w-[86rem] mx-auto;
@@ -51,6 +55,17 @@ body {
 @media screen and (min-width: 560px) {
   .specials-mobile {
     display: none;
+  }
+}
+
+@media screen and (min-width: 840px) {
+  footer .content-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  footer .image-wrapper {
+    margin-right: 20px;
   }
 }
 
