@@ -11,9 +11,11 @@ export default function Footer() {
   return (
     <footer className="py-[5rem] bg-primary-green">
       <div className="content-container flex flex-col gap-y-[3rem] justify-center  items-center text-white">
-        <div className="image-wrapper max-w-[9.6rem]">
-          <img src="./images/logo-white.png" alt="little lemon logo" />
-        </div>
+        <Link to="/">
+          <div className="image-wrapper max-w-[9.6rem]">
+            <img src="./images/logo-white.png" alt="little lemon logo" />
+          </div>
+        </Link>
         <div className="sitemap text-center">
           <h3 className="mb-[2rem] tracking-[0.5rem]">SITEMAP</h3>
           <nav className="sitemap-nav">
