@@ -1,27 +1,27 @@
-import MobileNav from './components/MobileNav'
-import useScreenMonitor from './assets/hooks/useScreenMonitor'
-import Nav from './components/Nav'
-import Header from './components/Header'
-import Main from './components/Main'
-import Hero from './components/Hero'
-import Specials from './components/Specials'
-import Reviews from './components/Reviews'
-import About from './components/About'
-import Footer from './components/Footer'
+import MobileNav from "./components/MobileNav"
+import useScreenMonitor from "./assets/hooks/useScreenMonitor"
+import Nav from "./components/Nav"
+import Header from "./components/Header"
+import Homepage from "./routes/Homepage"
+import Booking from "./routes/Booking"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Footer from "./components/Footer"
+import ErrorPage from "./routes/ErrorPage"
+import ScrollToTop from "./assets/hooks/ScrollToTop"
 
 export default function App() {
   const mobile = useScreenMonitor()
 
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToTop />
       <Header>{mobile ? <MobileNav /> : <Nav />}</Header>
-      <Main>
-        <Hero />
-        <Specials />
-        <Reviews />
-        <About />
-        <Footer />
-      </Main>
-    </>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/*" element={<ErrorPage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   )
 }

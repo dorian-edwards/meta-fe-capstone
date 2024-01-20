@@ -1,35 +1,45 @@
-export default function NavItems() {
+import { Link } from "react-router-dom"
+
+export default function NavItems({
+  closeOverlay,
+}: {
+  closeOverlay?: () => void
+}) {
+  const handleClose = () => {
+    if (closeOverlay) closeOverlay()
+  }
+
   return (
     <>
       <li>
-        <a href='' className='text-lead'>
+        <Link to={"/"} className="text-lead" onClick={handleClose}>
           Home
-        </a>
+        </Link>
       </li>
       <li>
-        <a href='' className='text-lead'>
+        <Link to="/about" className="text-lead" onClick={handleClose}>
           About
-        </a>
+        </Link>
       </li>
       <li>
-        <a href='' className='text-lead'>
+        <Link to="/menu" className="text-lead" onClick={handleClose}>
           Menu
-        </a>
+        </Link>
       </li>
       <li>
-        <a href='' className='text-lead'>
+        <Link to={"/booking"} className="text-lead" onClick={handleClose}>
           Reservations
-        </a>
+        </Link>
       </li>
       <li>
-        <a href='' className='text-lead'>
+        <Link to="/order" className="text-lead" onClick={handleClose}>
           Order Online
-        </a>
+        </Link>
       </li>
       <li>
-        <a href='' className='text-lead'>
+        <Link to="/login" className="text-lead" onClick={handleClose}>
           Login
-        </a>
+        </Link>
       </li>
     </>
   )
