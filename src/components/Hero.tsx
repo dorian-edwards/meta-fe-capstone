@@ -23,7 +23,7 @@ export default function Hero() {
           <div className="img-wrapper absolute max-h-[450px] overflow-hidden rounded-3xl">
             <img
               className=""
-              src="/images/restauranfood.jpg"
+              src="/images/restaurantfood.jpg"
               alt="tray of food being held by a person in an apron"
             />
           </div>
