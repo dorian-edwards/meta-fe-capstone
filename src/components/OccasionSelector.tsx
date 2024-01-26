@@ -51,7 +51,7 @@ export default function OccasionSelector({
   }))
 
   return (
-    <FormControl fullWidth sx={{ margin: '2.5rem 0', maxWidth: 300 }}>
+    <FormControl fullWidth sx={{ mb: '3.6rem', mt: '1rem', maxWidth: 300 }}>
       <InputLabel
         id='demo-simple-select-label'
         sx={{ fontSize: 16, backgroundColor: '#fff', padding: '0 1rem' }}

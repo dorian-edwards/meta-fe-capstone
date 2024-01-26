@@ -35,7 +35,7 @@ export default function PartySizeSelector({
       sx={{
         display: 'block',
         width: '100%',
-        maxWidth: 400,
+        maxWidth: 200,
         color: '#495E57',
         marginBottom: '2.5rem',
       }}
