@@ -12,6 +12,7 @@ import ErrorPage from './routes/ErrorPage'
 import ScrollToTop from './assets/hooks/ScrollToTop'
 import Main from './components/Main'
 import StateManagement from './contexts/StateManagement'
+import BookingConfirmation from './routes/BookingConfirmation'
 
 export default function App() {
   const mobile = useScreenMonitor()
@@ -26,6 +27,7 @@ export default function App() {
             <Routes>
               <Route path='/' element={<Homepage />} />
               <Route path='/booking' element={<BookingPage />} />
+              <Route path='/confirmation' element={<BookingConfirmation />} />
               <Route path='/*' element={<ErrorPage />} />
             </Routes>
           </Main>
