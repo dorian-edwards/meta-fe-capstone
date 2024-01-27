@@ -7,12 +7,9 @@ import Select from '@mui/material/Select/Select'
 import InputLabel from '@mui/material/InputLabel/InputLabel'
 import PartySizeSelector from './PartySizeSelector'
 import dayjs from 'dayjs'
-import { BookingProps } from '../routes/BookingPage'
+import { useBookingDataContext } from '../contexts/stateUtils'
 
-export default function BookingForm({
-  availableTimes,
-  dispatch,
-}: BookingProps) {
+export default function BookingForm() {
   const today = dayjs()
   const [guests, setGuests] = useState<number>(1)
   const [occasion, setOccasion] = useState<string>('')
@@ -22,6 +19,8 @@ export default function BookingForm({
       : dayjs().format('YYYY-MM-DD')
   )
   const [time, setTime] = useState<string>('')
+
+  const { selectedDateAvailableBookings } = useBookingDataContext()
 
   return (
     <section className='form-wrapper pt-[6.2rem] pb-[9.2rem] min-[560px]:pt-[16rem]'>
@@ -81,7 +80,7 @@ export default function BookingForm({
               sx={{ fontSize: '1.4rem' }}
               required
             >
-              {availableTimes.map((time) => (
+              {selectedDateAvailableBookings.map((time) => (
                 <MenuItem key={time} value={time} sx={{ fontSize: '1.4rem' }}>
                   {time}
                 </MenuItem>

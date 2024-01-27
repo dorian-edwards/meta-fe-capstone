@@ -1,15 +1,7 @@
 import BookingForm from '../components/BookingForm'
 import Hero from '../components/Hero'
 
-export interface BookingProps {
-  availableTimes: string[]
-  dispatch: React.Dispatch<{
-    type: string
-    date: string
-  }>
-}
-
-export default function Booking({ availableTimes, dispatch }: BookingProps) {
+export default function Booking() {
   const imgAlt =
     'We are a family owned mediterranean restaurant, focused on traditional recipes served with a modern twist.'
   return (
@@ -21,7 +13,7 @@ export default function Booking({ availableTimes, dispatch }: BookingProps) {
         imgUrl='/images/marissa-grootes.jpg'
         imgAlt={imgAlt}
       />
-      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+      <BookingForm />
     </>
   )
 }
