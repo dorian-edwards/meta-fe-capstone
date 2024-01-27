@@ -1,18 +1,14 @@
-import { ReactNode } from "react"
+import { ButtonPrimaryProps } from '../dataTypes'
 
 export default function ButtonPrimary({
   children,
   type,
   sx,
-}: {
-  children: ReactNode
-  type?: "submit" | "button"
-  sx?: React.CSSProperties
-}) {
+}: ButtonPrimaryProps) {
   return (
     <button
-      className="text-lead bg-primary-yellow rounded-3xl py-[1rem] px-[2rem]"
-      type={type || "button"}
+      className='text-lead bg-primary-yellow rounded-3xl py-[1rem] px-[2rem]'
+      type={type || 'button'}
       style={sx}
     >
       {children}
