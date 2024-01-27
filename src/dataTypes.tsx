@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export interface MenuItem {
   imageUrl: string
   imageDescription: string
@@ -46,4 +48,20 @@ export interface DateSelectorProps {
 export interface TimeSelectorProps {
   time: string
   setTime: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface ButtonPrimaryProps {
+  children: ReactNode
+  type?: 'submit' | 'button'
+  sx?: React.CSSProperties
+}
+
+export interface MobileNavMenuProps {
+  active: boolean
+  closeOverlay: () => void
+}
+
+export interface PartySizeSelectorProps {
+  guests: number
+  setGuests: React.Dispatch<React.SetStateAction<number>>
 }
