@@ -37,3 +37,13 @@ export interface HeroProps {
   imgUrl: string
   imgAlt: string
 }
+
+export interface DateSelectorProps {
+  date: string
+  setDate: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface TimeSelectorProps {
+  time: string
+  setTime: React.Dispatch<React.SetStateAction<string>>
+}
