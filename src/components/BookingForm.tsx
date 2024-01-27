@@ -5,8 +5,10 @@ import PartySizeSelector from './PartySizeSelector'
 import dayjs from 'dayjs'
 import DateSelector from './DateSelector'
 import TimeSelector from './TimeSelector'
+import { useBookingDispatchContext } from '../contexts/stateUtils'
 
 export default function BookingForm() {
+  const dispatch = useBookingDispatchContext()
   const [guests, setGuests] = useState<number>(1)
   const [occasion, setOccasion] = useState<string>('')
   const [date, setDate] = useState<string>(
@@ -24,6 +26,16 @@ export default function BookingForm() {
       guests,
       occasion,
     })
+
+    dispatch({
+      type: 'reserve_time',
+      payload: {
+        date,
+        time,
+      },
+    })
+
+    setTime('')
   }
 
   return (

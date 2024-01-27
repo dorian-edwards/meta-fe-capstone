@@ -1,7 +1,18 @@
 import dayjs from 'dayjs'
 import { DateSelectorProps } from '../dataTypes'
+import { useBookingDispatchContext } from '../contexts/stateUtils'
 
 export default function DateSelector({ date, setDate }: DateSelectorProps) {
+  const dispatch = useBookingDispatchContext()
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDate(e.target.value)
+    dispatch({
+      type: 'change_date',
+      payload: { date: e.target.value },
+    })
+  }
+
   return (
     <div className='date-wrapper mb-[1rem]'>
       <label
@@ -20,7 +31,7 @@ export default function DateSelector({ date, setDate }: DateSelectorProps) {
         }
         max={dayjs().add(60, 'day').format('YYYY-MM-DD')}
         value={date}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={handleDateChange}
         className='block border border-[rgba(0,_0,_0,_0.25)] rounded-[0.4rem] w-full max-w-[20rem] px-[1rem]'
         required
       />

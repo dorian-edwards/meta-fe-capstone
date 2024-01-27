@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { BookingDataContext, BookingDispatchContext } from './StateManagement'
 import { StateData, TimeSlots } from '../dataTypes'
 
-// generates our data 60 days
+// generates availability 60 days out
 export function generateTimeSlots() {
   const timeSlots: TimeSlots = {}
 
@@ -40,7 +40,40 @@ export function updateTimes(
   state: StateData,
   action: { type: string; payload: { date: string; time?: string } }
 ): StateData {
-  return state
+  switch (action.type) {
+    case 'change_date': {
+      return {
+        ...state,
+        selectedDateAvailableBookings:
+          state.sixtyDayAvailableBookings[action.payload.date],
+      }
+    }
+
+    case 'reserve_time': {
+      const { sixtyDayAvailableBookings } = state
+      const { date, time } = action.payload
+
+      const timeSlots = sixtyDayAvailableBookings[date].filter(
+        (t) => t !== time
+      )
+
+      const data = {
+        ...state,
+        sixtyDayAvailableBookings: {
+          ...sixtyDayAvailableBookings,
+          [date]: timeSlots,
+        },
+        selectedDateAvailableBookings: timeSlots,
+      }
+
+      console.log(data)
+
+      return data
+    }
+
+    default:
+      return state
+  }
 }
 
 export function useBookingDataContext() {
