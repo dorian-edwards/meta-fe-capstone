@@ -11,7 +11,7 @@ export default function Homepage() {
     <>
       <Hero
         id='hero-home'
-        link='/'
+        link='/booking'
         buttonText='Reserve a Table'
         imgUrl='/images/restaurantfood.jpg'
         imgAlt={imgAlt}

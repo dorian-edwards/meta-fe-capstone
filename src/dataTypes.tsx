@@ -65,3 +65,15 @@ export interface PartySizeSelectorProps {
   guests: number
   setGuests: React.Dispatch<React.SetStateAction<number>>
 }
+
+export interface FormData {
+  date: string
+  time: string
+  guests: number
+  occasion: string
+}
+
+export interface Response {
+  status: string
+  details?: FormData
+}

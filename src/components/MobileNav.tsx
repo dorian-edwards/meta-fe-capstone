@@ -16,7 +16,7 @@ export default function MobileNav() {
         </Link>
         <button
           onClick={() => setMenuActive((prevState) => !prevState)}
-          aria-label='menu'
+          aria-label='hamburger menu'
         >
           <HamburgerIcon />
         </button>

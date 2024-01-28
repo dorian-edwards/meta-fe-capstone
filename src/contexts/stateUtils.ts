@@ -38,7 +38,7 @@ export function generateTimeSlots() {
 
 export function updateTimes(
   state: StateData,
-  action: { type: string; payload: { date: string; time?: string } }
+  action: { type: string; payload: Payload }
 ): StateData {
   switch (action.type) {
     case 'change_date': {
@@ -92,4 +92,11 @@ export function useBookingDispatchContext() {
       'BookingDispatchContext must be used within a BookingDispatchContext provider'
     )
   return context
+}
+
+export interface Payload {
+  date: string
+  time?: string
+  guests?: number
+  occasion?: string
 }
