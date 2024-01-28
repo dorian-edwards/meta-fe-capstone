@@ -6,7 +6,7 @@ export default function Booking() {
     'We are a family owned mediterranean restaurant, focused on traditional recipes served with a modern twist.'
 
   return (
-    <>
+    <section className='booking-page'>
       <Hero
         id='hero-booking'
         link='/events'
@@ -15,6 +15,6 @@ export default function Booking() {
         imgAlt={imgAlt}
       />
       <BookingForm />
-    </>
+    </section>
   )
 }
