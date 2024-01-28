@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 export default function Booking() {
   const imgAlt =
     'We are a family owned mediterranean restaurant, focused on traditional recipes served with a modern twist.'
+
   return (
     <>
       <Hero

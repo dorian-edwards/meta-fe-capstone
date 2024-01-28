@@ -1,12 +1,10 @@
 import { Slider } from '@mui/material'
+import { PartySizeSelectorProps } from '../dataTypes'
 
 export default function PartySizeSelector({
   guests,
   setGuests,
-}: {
-  guests: number
-  setGuests: React.Dispatch<React.SetStateAction<number>>
-}) {
+}: PartySizeSelectorProps) {
   const marks = [
     { value: 1, label: '1' },
     { value: 2, label: '2' },
@@ -35,7 +33,7 @@ export default function PartySizeSelector({
       sx={{
         display: 'block',
         width: '100%',
-        maxWidth: 400,
+        maxWidth: 200,
         color: '#495E57',
         marginBottom: '2.5rem',
       }}

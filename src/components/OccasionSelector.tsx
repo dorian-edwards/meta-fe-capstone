@@ -51,7 +51,7 @@ export default function OccasionSelector({
   }))
 
   return (
-    <FormControl fullWidth sx={{ margin: '2.5rem 0', maxWidth: 300 }}>
+    <FormControl fullWidth sx={{ mb: '3.6rem', mt: '1rem', maxWidth: 300 }}>
       <InputLabel
         id='demo-simple-select-label'
         sx={{ fontSize: 16, backgroundColor: '#fff', padding: '0 1rem' }}
@@ -70,17 +70,17 @@ export default function OccasionSelector({
         <MenuItem value='' sx={{ fontSize: '1.6rem' }}>
           <em>None</em>
         </MenuItem>
-        <MenuItem value={'anniversary'} sx={{ fontSize: '1.6rem' }}>
+        <MenuItem value={'Anniversary'} sx={{ fontSize: '1.6rem' }}>
           <span className='flex items-center gap-x-[1rem]'>
             Anniversary <Glasses />
           </span>
         </MenuItem>
-        <MenuItem value={'birthday'} sx={{ fontSize: '1.6rem' }}>
+        <MenuItem value={'Birthday'} sx={{ fontSize: '1.6rem' }}>
           <span className='flex items-center gap-x-[1rem]'>
             Birthday <Cake />
           </span>
         </MenuItem>
-        <MenuItem value={'graduation'} sx={{ fontSize: '1.6rem' }}>
+        <MenuItem value={'Graduation'} sx={{ fontSize: '1.6rem' }}>
           <span className='flex items-center gap-x-[1rem]'>
             Graduation <Cap />
           </span>

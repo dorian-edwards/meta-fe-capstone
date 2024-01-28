@@ -1,13 +1,6 @@
+import { HeroProps } from '../dataTypes'
 import ButtonPrimary from './ButtonPrimary'
 import { Link } from 'react-router-dom'
-
-interface HeroProps {
-  id: string
-  link: string
-  buttonText: string
-  imgUrl: string
-  imgAlt: string
-}
 
 export default function Hero(props: HeroProps) {
   const description =

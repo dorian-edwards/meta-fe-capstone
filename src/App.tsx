@@ -11,6 +11,8 @@ import Footer from './components/Footer'
 import ErrorPage from './routes/ErrorPage'
 import ScrollToTop from './assets/hooks/ScrollToTop'
 import Main from './components/Main'
+import StateManagement from './contexts/StateManagement'
+import BookingConfirmation from './routes/BookingConfirmation'
 
 export default function App() {
   const mobile = useScreenMonitor()
@@ -20,13 +22,16 @@ export default function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Header>{mobile ? <MobileNav /> : <Nav />}</Header>
-        <Main>
-          <Routes>
-            <Route path='/' element={<Homepage />} />
-            <Route path='/booking' element={<BookingPage />} />
-            <Route path='/*' element={<ErrorPage />} />
-          </Routes>
-        </Main>
+        <StateManagement>
+          <Main>
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/booking' element={<BookingPage />} />
+              <Route path='/confirmation' element={<BookingConfirmation />} />
+              <Route path='/*' element={<ErrorPage />} />
+            </Routes>
+          </Main>
+        </StateManagement>
         <Footer />
       </BrowserRouter>
     </LocalizationProvider>

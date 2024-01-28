@@ -28,6 +28,10 @@ select {
   .content-container {
     @apply w-11/12 max-w-[86rem] mx-auto;
   }
+
+  .grid-item {
+    @apply bg-white py-[2px];
+  }
 }
 
 @layer components {
