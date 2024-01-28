@@ -13,7 +13,7 @@ export default function Homepage() {
         id='hero-home'
         link='/booking'
         buttonText='Reserve a Table'
-        imgUrl='/images/restaurantfood.jpg'
+        imgUrl='./images/restaurantfood.jpg'
         imgAlt={imgAlt}
       />
       <Specials />

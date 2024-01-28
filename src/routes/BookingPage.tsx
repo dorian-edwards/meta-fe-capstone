@@ -11,7 +11,7 @@ export default function Booking() {
         id='hero-booking'
         link='/events'
         buttonText='Special Events'
-        imgUrl='/images/marissa-grootes.jpg'
+        imgUrl='./images/marissa-grootes.jpg'
         imgAlt={imgAlt}
       />
       <BookingForm />
