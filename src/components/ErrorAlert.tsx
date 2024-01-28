@@ -7,7 +7,7 @@ export default function ErrorAlert() {
         severity='error'
         sx={{ border: '2px solid red', fontSize: '1.6rem' }}
       >
-        This is an error Alert.
+        An unexpected error occurred. Please try again.
       </Alert>
     </div>
   )
