@@ -18,9 +18,19 @@ em {
   font-style: italic;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 @layer utilities {
   .content-container {
     @apply w-11/12 max-w-[86rem] mx-auto;
+  }
+
+  .grid-item {
+    @apply bg-white py-[2px];
   }
 }
 
