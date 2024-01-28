@@ -45,7 +45,7 @@ export function updateTimes(
       return {
         ...state,
         selectedDateAvailableBookings:
-          state.sixtyDayAvailableBookings[action.payload.date],
+          state.sixtyDayAvailableBookings[action.payload.date] || [],
       }
     }
 
