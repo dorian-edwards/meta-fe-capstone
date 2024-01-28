@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import OccasionSelector from './OccasionSelector'
 import PartySizeSelector from './PartySizeSelector'
-import dayjs from 'dayjs'
 import DateSelector from './DateSelector'
 import TimeSelector from './TimeSelector'
 import useSubmit from '../hooks/useSubmit'
@@ -13,11 +12,7 @@ export default function BookingForm() {
   const navigate = useNavigate()
   const { isLoading, response, submit } = useSubmit()
 
-  const [date, setDate] = useState<string>(
-    dayjs().get('hour') >= 22
-      ? dayjs().add(1, 'day').format('YYYY-MM-DD')
-      : dayjs().format('YYYY-MM-DD')
-  )
+  const [date, setDate] = useState<string>('')
   const [time, setTime] = useState<string>('')
   const [guests, setGuests] = useState<number>(1)
   const [occasion, setOccasion] = useState<string>('')
@@ -69,7 +64,7 @@ export default function BookingForm() {
           <h2 className='text-title pb-[5rem]'>Reserve a table</h2>
           <form className='max-w-[40rem]' onSubmit={handleSubmit}>
             <DateSelector date={date} setDate={setDate} />
-            <TimeSelector time={time} setTime={setTime} />
+            <TimeSelector time={time} setTime={setTime} date={date} />
             <PartySizeSelector guests={guests} setGuests={setGuests} />
             <OccasionSelector occasion={occasion} setOccasion={setOccasion} />
             <LoadingButton

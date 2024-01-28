@@ -48,6 +48,7 @@ export interface DateSelectorProps {
 export interface TimeSelectorProps {
   time: string
   setTime: React.Dispatch<React.SetStateAction<string>>
+  date: string
 }
 
 export interface ButtonPrimaryProps {

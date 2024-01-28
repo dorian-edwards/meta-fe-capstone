@@ -63,10 +63,8 @@ export function updateTimes(
           ...sixtyDayAvailableBookings,
           [date]: timeSlots,
         },
-        selectedDateAvailableBookings: timeSlots,
+        selectedDateAvailableBookings: [],
       }
-
-      console.log(data)
 
       return data
     }

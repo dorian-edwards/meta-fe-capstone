@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import { createContext, useReducer, ReactNode } from 'react'
 import { generateTimeSlots, updateTimes } from './stateUtils'
 import { StateData } from '../dataTypes'
@@ -15,10 +14,7 @@ export const BookingDispatchContext = createContext<React.Dispatch<{
 export default function StateManagement({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(updateTimes, generateTimeSlots, (fn) => {
     const sixtyDayAvailableBookings = fn()
-    const selectedDateAvailableBookings =
-      dayjs().get('hour') >= 22
-        ? sixtyDayAvailableBookings[dayjs().add(1, 'day').format('YYYY-MM-DD')]
-        : sixtyDayAvailableBookings[dayjs().format('YYYY-MM-DD')]
+    const selectedDateAvailableBookings: string[] = []
 
     return {
       sixtyDayAvailableBookings,

@@ -6,7 +6,11 @@ import { TimeSelectorProps } from '../dataTypes'
 import { useBookingDataContext } from '../contexts/stateUtils'
 import FormHelperText from '@mui/material/FormHelperText/FormHelperText'
 
-export default function TimeSelector({ time, setTime }: TimeSelectorProps) {
+export default function TimeSelector({
+  time,
+  setTime,
+  date,
+}: TimeSelectorProps) {
   const { selectedDateAvailableBookings } = useBookingDataContext()
 
   return (
@@ -37,7 +41,7 @@ export default function TimeSelector({ time, setTime }: TimeSelectorProps) {
           </MenuItem>
         ))}
       </Select>
-      {selectedDateAvailableBookings.length === 0 ? (
+      {date && selectedDateAvailableBookings.length === 0 ? (
         <FormHelperText sx={{ color: '#F00', fontSize: '1.2rem' }}>
           No reservations available
         </FormHelperText>
