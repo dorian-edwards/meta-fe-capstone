@@ -24,6 +24,13 @@ select {
   appearance: none;
 }
 
+.MuiFormLabel-root.MuiInputLabel-root.Mui-focused,
+.MuiFormLabel-root.MuiInputLabel-root.MuiFormLabel-filled {
+  color: #f4ce14;
+  top: -20px;
+  left: -10px;
+}
+
 @layer utilities {
   .content-container {
     @apply w-11/12 max-w-[86rem] mx-auto;

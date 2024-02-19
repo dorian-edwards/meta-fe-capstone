@@ -55,6 +55,7 @@ export interface ButtonPrimaryProps {
   children: ReactNode
   type?: 'submit' | 'button'
   sx?: React.CSSProperties
+  disabled?: boolean
 }
 
 export interface MobileNavMenuProps {
@@ -70,7 +71,7 @@ export interface PartySizeSelectorProps {
 export interface FormData {
   date: string
   time: string
-  guests: number
+  guests: string
   occasion: string
 }
 

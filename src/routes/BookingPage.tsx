@@ -1,20 +1,27 @@
+import { useState } from 'react'
+import { FormData } from '../dataTypes'
+import ErrorAlert from '../components/ErrorAlert'
 import BookingForm from '../components/BookingForm'
-import Hero from '../components/Hero'
 
-export default function Booking() {
-  const imgAlt =
-    'We are a family owned mediterranean restaurant, focused on traditional recipes served with a modern twist.'
+export default function BookingPage() {
+  const [displayError, setDisplayError] = useState<boolean>(false)
+  const [formData, setFormData] = useState<FormData>({
+    date: '',
+    time: '',
+    guests: '',
+    occasion: '',
+  })
 
   return (
-    <section className='booking-page'>
-      <Hero
-        id='hero-booking'
-        link='/events'
-        buttonText='Special Events'
-        imgUrl='./images/marissa-grootes.jpg'
-        imgAlt={imgAlt}
-      />
-      <BookingForm />
-    </section>
+    <>
+      {displayError ? <ErrorAlert /> : null}
+      <section className='alternate-booking'>
+        <BookingForm
+          formData={formData}
+          setDisplayError={setDisplayError}
+          setFormData={setFormData}
+        />
+      </section>
+    </>
   )
 }

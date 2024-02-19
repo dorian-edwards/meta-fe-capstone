@@ -65,7 +65,6 @@ export function updateTimes(
         },
         selectedDateAvailableBookings: [],
       }
-
       return data
     }
 
