@@ -3,15 +3,28 @@ import { FormData } from '../dataTypes'
 import ErrorAlert from '../components/ErrorAlert'
 import BookingForm from '../components/BookingForm'
 
-export default function BookingPage() {
-  const [displayError, setDisplayError] = useState<boolean>(false)
-  const [formData, setFormData] = useState<FormData>({
+const initialData = {
+  reservation: {
     date: '',
     time: '',
     guests: '',
     occasion: '',
-  })
+  },
+  contact: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    telephone: '',
+  },
+}
 
+export default function BookingPage() {
+  const [displayError, setDisplayError] = useState<boolean>(false)
+  const [formData, setFormData] = useState<FormData>(initialData)
+
+  /*
+
+  */
   return (
     <>
       {displayError ? <ErrorAlert /> : null}

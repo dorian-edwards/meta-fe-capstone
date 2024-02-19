@@ -32,7 +32,15 @@ export default function BookingForm({
   }
 
   const resetForm = () => {
-    setFormData({ date: '', time: '', guests: '', occasion: '' })
+    setFormData({
+      reservation: { date: '', time: '', guests: '', occasion: '' },
+      contact: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        telephone: '',
+      },
+    })
   }
 
   useEffect(() => {
@@ -50,31 +58,25 @@ export default function BookingForm({
     }
   }, [response, navigate])
 
-  const formIsInvalid = (): boolean => {
+  const reservationIsValid = (): boolean => {
     return (
-      formData.date === '' || formData.time === '' || formData.guests === ''
+      formData.reservation.date === '' ||
+      formData.reservation.time === '' ||
+      formData.reservation.guests === ''
     )
   }
 
-  const handleDateChange = (date: string) => {
-    setFormData({ ...formData, date: date })
-  }
-
-  const handleOccasionChange = (occasion: string) => {
-    setFormData({ ...formData, occasion: occasion })
-  }
-
-  const handleGuestsChange = (guests: string) => {
-    setFormData({ ...formData, guests: guests })
-  }
-
-  const handleTimeChange = (time: string) => {
-    setFormData({ ...formData, time: time })
+  const updateForm = (section: string, property: string, value: string) => {
+    const copy = structuredClone(formData)
+    setFormData({
+      ...copy,
+      [section]: { ...copy[section], [property]: value },
+    })
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (formIsInvalid()) return
+    if (reservationIsValid()) return
     submit(formData)
   }
 
@@ -85,19 +87,22 @@ export default function BookingForm({
           <TitleText sx={{ marginBottom: '4rem' }}>Reservations</TitleText>
           <div className='input-wrapper min-[530px]:grid min-[530px]:grid-cols-2 min-[530px]:gap-[2rem]'>
             <Calendar
-              value={formData.date}
-              setValue={handleDateChange}
+              value={formData.reservation.date}
+              setValue={updateForm}
               minDate={minDate}
             />
             <OccasionSelector
-              value={formData.occasion}
-              setValue={handleOccasionChange}
+              value={formData.reservation.occasion}
+              setValue={updateForm}
             />
-            <PartySize value={formData.guests} setValue={handleGuestsChange} />
+            <PartySize
+              value={formData.reservation.guests}
+              setValue={updateForm}
+            />
             <TimeSelection
-              value={formData.time}
-              setValue={handleTimeChange}
-              date={formData.date}
+              value={formData.reservation.time}
+              setValue={updateForm}
+              date={formData.reservation.date}
             />
           </div>
         </div>
@@ -107,7 +112,7 @@ export default function BookingForm({
         type='submit'
         loading={isLoading}
         loadingPosition='center'
-        disabled={formIsInvalid()}
+        disabled={reservationIsValid()}
         sx={{
           margin: '5rem auto',
           minWidth: '30rem',

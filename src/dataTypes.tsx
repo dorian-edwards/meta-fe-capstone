@@ -69,10 +69,7 @@ export interface PartySizeSelectorProps {
 }
 
 export interface FormData {
-  date: string
-  time: string
-  guests: string
-  occasion: string
+  [key: string]: { [key: string]: string }
 }
 
 export interface Response {

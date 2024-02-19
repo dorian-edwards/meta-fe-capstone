@@ -4,7 +4,8 @@ import { useBookingDispatchContext } from '../contexts/stateUtils'
 
 export interface CalendarProps {
   value: string
-  setValue: (s: string) => void
+  setValue: (section: string, property: string, value: string) => void
+
   minDate: dayjs.Dayjs
 }
 
@@ -27,8 +28,7 @@ export default function Calendar({ value, setValue, minDate }: CalendarProps) {
       onChange={(val) => {
         if (val) {
           const date = val.format('YYYY-MM-DD')
-          console.log(date)
-          setValue(date)
+          setValue('reservation', 'date', date)
           dispatch({
             type: 'change_date',
             payload: { date: date },

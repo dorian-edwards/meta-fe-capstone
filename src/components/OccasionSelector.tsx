@@ -15,7 +15,7 @@ export default function OccasionSelector({
   setValue,
 }: {
   value: string
-  setValue: (s: string) => void
+  setValue: (section: string, property: string, value: string) => void
 }) {
   return (
     <FormControl fullWidth sx={{ mb: '3.6rem' }}>
@@ -30,7 +30,7 @@ export default function OccasionSelector({
         id='demo-simple-select'
         value={value}
         label='Occasion'
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setValue('reservation', 'occasion', e.target.value)}
         input={<BootstrapInput />}
         inputProps={{ IconComponent: () => null }}
       >

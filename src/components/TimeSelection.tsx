@@ -15,7 +15,8 @@ export default function TimeSelection({
   date,
 }: {
   value: string
-  setValue: (s: string) => void
+  setValue: (section: string, property: string, value: string) => void
+
   date: string
 }) {
   const { selectedDateAvailableBookings } = useBookingDataContext()
@@ -35,7 +36,7 @@ export default function TimeSelection({
         value={value}
         input={<BootstrapInput />}
         inputProps={{ IconComponent: () => null }}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setValue('reservation', 'time', e.target.value)}
         required
         disabled={selectedDateAvailableBookings.length === 0}
       >

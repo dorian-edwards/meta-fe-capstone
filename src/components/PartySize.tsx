@@ -9,7 +9,7 @@ import {
 
 export interface PartySizeProps {
   value: string
-  setValue: (s: string) => void
+  setValue: (section: string, property: string, value: string) => void
 }
 
 export default function PartySize({ value, setValue }: PartySizeProps) {
@@ -28,7 +28,7 @@ export default function PartySize({ value, setValue }: PartySizeProps) {
         value={value}
         input={<BootstrapInput />}
         inputProps={{ IconComponent: () => null }}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setValue('reservation', 'guests', e.target.value)}
         required
       >
         <MenuItem value='' sx={{ fontSize: '1.6rem' }}>
