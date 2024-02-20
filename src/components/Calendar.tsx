@@ -46,6 +46,10 @@ const datePickerStyles = {
     backgroundColor: '#EDEFEE',
     fontSize: '1.6rem',
   },
+  '&::placeholder': {
+    color: '#999',
+  },
+
   '.MuiFormLabel-root': {
     fontSize: '1.6rem',
     color: '#000',

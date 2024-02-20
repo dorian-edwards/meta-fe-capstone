@@ -56,6 +56,7 @@ export interface ButtonPrimaryProps {
   type?: 'submit' | 'button'
   sx?: React.CSSProperties
   disabled?: boolean
+  onClick?: () => void
 }
 
 export interface MobileNavMenuProps {

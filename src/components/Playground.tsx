@@ -245,6 +245,6 @@ const formInputStyles = {
     fontSize: '1.6rem',
   },
   '.MuiInputLabel-root': {
-    fontSize: '1.2rem',
+    fontSize: '1.6rem',
   },
 }

@@ -5,6 +5,7 @@ export default function ButtonPrimary({
   type,
   sx,
   disabled,
+  onClick,
 }: ButtonPrimaryProps) {
   return (
     <button
@@ -12,6 +13,7 @@ export default function ButtonPrimary({
       type={type || 'button'}
       style={sx}
       disabled={disabled || false}
+      onClick={onClick}
     >
       {children}
     </button>
