@@ -97,3 +97,22 @@ export interface Payload {
   guests?: number
   occasion?: string
 }
+
+export function validatePhoneNumber(tel: string): string {
+  const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+
+  if (phoneRegex.test(tel)) {
+    return tel.replace(phoneRegex, '($1) $2-$3')
+  } else {
+    throw new Error('Invalid number format')
+  }
+}
+
+export function validateEmail(email: string): boolean {
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+  if (emailRegex.test(email)) {
+    return true
+  } else {
+    throw new Error('Invalid email format')
+  }
+}

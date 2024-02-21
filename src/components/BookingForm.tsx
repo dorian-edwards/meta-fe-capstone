@@ -1,17 +1,51 @@
-import dayjs from 'dayjs'
 import useSubmit from '../hooks/useSubmit'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { FormData } from '../dataTypes'
 import TitleText from './TitleText'
-import Calendar from './Calendar'
-import OccasionSelector from './OccasionSelector'
-import PartySize from './PartySize'
-import TimeSelection from './TimeSelection'
 import LoadingButton from '@mui/lab/LoadingButton/LoadingButton'
 import ReservationImages from './ReservationImages'
-import TextField from '@mui/material/TextField/TextField'
 import ButtonPrimary from './ButtonPrimary'
+import ContactForm from './ContactForm'
+import ReservationForm from './ReservationForm'
+
+export interface ContactErrors {
+  firstName: {
+    error: boolean
+    message: string
+  }
+  lastName: {
+    error: boolean
+    message: string
+  }
+  email: {
+    error: boolean
+    message: string
+  }
+  telephone: {
+    error: boolean
+    message: string
+  }
+}
+
+const initialContactErrors = {
+  firstName: {
+    error: false,
+    message: '',
+  },
+  lastName: {
+    error: false,
+    message: '',
+  },
+  email: {
+    error: false,
+    message: '',
+  },
+  telephone: {
+    error: false,
+    message: '',
+  },
+}
 
 export default function BookingForm({
   formData,
@@ -25,6 +59,8 @@ export default function BookingForm({
   const { isLoading, response, submit } = useSubmit() //
   const navigate = useNavigate() // for navigating after successful form submission
   const [step, setStep] = useState<number>(1)
+  const [contactErrors, setContactErrors] =
+    useState<ContactErrors>(initialContactErrors)
 
   const flashError = () => {
     setDisplayError(true)
@@ -60,12 +96,24 @@ export default function BookingForm({
     }
   }, [response, navigate])
 
-  const reservationIsValid = (): boolean => {
-    return (
-      formData.reservation.date === '' ||
-      formData.reservation.time === '' ||
-      formData.reservation.guests === ''
+  const reservationIsInvalid = (): boolean => {
+    const { date, time, guests } = formData.reservation
+    return date === '' || time === '' || guests === ''
+  }
+
+  const contactIsInvalid = (): boolean => {
+    const { firstName, lastName, email, telephone } = formData.contact
+    if (
+      firstName.trim() === '' ||
+      lastName.trim() === '' ||
+      email.trim() === '' ||
+      telephone.trim() === ''
     )
+      return true
+    for (const { error } of Object.values(contactErrors)) {
+      if (error) return true
+    }
+    return false
   }
 
   const updateForm = (section: string, property: string, value: string) => {
@@ -78,7 +126,7 @@ export default function BookingForm({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (reservationIsValid()) return
+    if (contactIsInvalid()) return
     submit(formData)
   }
 
@@ -93,7 +141,12 @@ export default function BookingForm({
             {step === 1 ? (
               <ReservationForm formData={formData} updateForm={updateForm} />
             ) : (
-              <ContactForm formData={formData} updateForm={updateForm} />
+              <ContactForm
+                formData={formData}
+                updateForm={updateForm}
+                contactErrors={contactErrors}
+                setContactErrors={setContactErrors}
+              />
             )}
           </div>
         </div>
@@ -102,6 +155,7 @@ export default function BookingForm({
       {step === 1 ? (
         <ButtonPrimary
           onClick={() => setStep(2)}
+          disabled={reservationIsInvalid()}
           sx={{
             display: 'block',
             width: '90%',
@@ -116,7 +170,7 @@ export default function BookingForm({
           type='submit'
           loading={isLoading}
           loadingPosition='center'
-          disabled={reservationIsValid()}
+          disabled={contactIsInvalid()}
           sx={{
             margin: '5rem auto',
             width: '90%',
@@ -145,114 +199,5 @@ export default function BookingForm({
         </LoadingButton>
       )}
     </form>
-  )
-}
-
-export function ReservationForm({
-  formData,
-  updateForm,
-}: {
-  formData: FormData
-  updateForm: (section: string, property: string, value: string) => void
-}) {
-  const minDate = dayjs().get('hour') >= 22 ? dayjs().add(1, 'day') : dayjs()
-  return (
-    <>
-      {' '}
-      <Calendar
-        value={formData.reservation.date}
-        setValue={updateForm}
-        minDate={minDate}
-      />
-      <OccasionSelector
-        value={formData.reservation.occasion}
-        setValue={updateForm}
-      />
-      <PartySize value={formData.reservation.guests} setValue={updateForm} />
-      <TimeSelection
-        value={formData.reservation.time}
-        setValue={updateForm}
-        date={formData.reservation.date}
-      />
-    </>
-  )
-}
-
-export function ContactForm({
-  formData,
-  updateForm,
-}: {
-  formData: FormData
-  updateForm: (section: string, property: string, value: string) => void
-}) {
-  const formInputStyles = {
-    fontSize: '1.6rem',
-    marginBottom: '3.6rem',
-    '.MuiTextField-root': {
-      fontSize: '1.6rem',
-    },
-    '.MuiInputBase-input': {
-      fontSize: '1.6rem',
-      backgroundColor: '#EDEFEE',
-      borderRadius: '4px',
-    },
-    '.MuiInputLabel-root': {
-      fontSize: '1.6rem',
-      color: '#777',
-    },
-    '.MuiFormHelperText-root': {
-      fontSize: '1.2rem',
-      position: 'absolute',
-      bottom: '-2rem',
-    },
-  }
-
-  return (
-    <>
-      {' '}
-      <TextField
-        id='first-name'
-        label='First name'
-        type='text'
-        variant='outlined'
-        fullWidth
-        value={formData.contact.firstName}
-        onChange={(e) => updateForm('contact', 'firstName', e.target.value)}
-        sx={formInputStyles}
-        required
-      />
-      <TextField
-        id='last-name'
-        label='Last name'
-        type='text'
-        variant='outlined'
-        fullWidth
-        value={formData.contact.lastName}
-        onChange={(e) => updateForm('contact', 'lastName', e.target.value)}
-        sx={formInputStyles}
-      />
-      <TextField
-        id='email'
-        label='Email'
-        type='email'
-        variant='outlined'
-        fullWidth
-        value={formData.contact.email}
-        onChange={(e) => updateForm('contact', 'email', e.target.value)}
-        sx={formInputStyles}
-      />
-      <TextField
-        id='phone'
-        label='Phone'
-        type='tel'
-        variant='outlined'
-        fullWidth
-        value={formData.contact.phone}
-        onChange={(e) => updateForm('contact', 'telephone', e.target.value)}
-        sx={{ ...formInputStyles, marginBottom: '5.9rem' }}
-        error
-        helperText='broh'
-      />
-    </>
   )
 }
