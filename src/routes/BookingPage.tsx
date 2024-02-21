@@ -18,7 +18,11 @@ const initialData = {
   },
 }
 
-export default function BookingPage() {
+export default function BookingPage({
+  setBooked,
+}: {
+  setBooked: React.Dispatch<React.SetStateAction<boolean>>
+}) {
   const [displayError, setDisplayError] = useState<boolean>(false)
   const [formData, setFormData] = useState<FormData>(initialData)
 
@@ -33,6 +37,7 @@ export default function BookingPage() {
           formData={formData}
           setDisplayError={setDisplayError}
           setFormData={setFormData}
+          setBooked={setBooked}
         />
       </section>
     </>

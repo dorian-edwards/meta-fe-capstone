@@ -2,7 +2,11 @@ import { Link, useLocation } from 'react-router-dom'
 import ButtonPrimary from '../components/ButtonPrimary'
 import dayjs from 'dayjs'
 
-export default function BookingConfirmation() {
+export default function BookingConfirmation({
+  setBooked,
+}: {
+  setBooked: React.Dispatch<React.SetStateAction<boolean>>
+}) {
   const {
     state: { date, time, guests, occasion },
   } = useLocation()

@@ -51,10 +51,12 @@ export default function BookingForm({
   formData,
   setFormData,
   setDisplayError,
+  setBooked,
 }: {
   formData: FormData
   setFormData: React.Dispatch<React.SetStateAction<FormData>>
   setDisplayError: React.Dispatch<React.SetStateAction<boolean>>
+  setBooked: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const { isLoading, response, submit } = useSubmit() //
   const navigate = useNavigate() // for navigating after successful form submission
@@ -90,6 +92,7 @@ export default function BookingForm({
 
     if (response.status === 'success') {
       resetForm()
+      setBooked(true)
       navigate('/confirmation', {
         state: response.details,
       })
