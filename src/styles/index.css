@@ -24,6 +24,24 @@ select {
   appearance: none;
 }
 
+.MuiFormLabel-root.MuiInputLabel-root.Mui-focused,
+.MuiFormLabel-root.MuiInputLabel-root.MuiFormLabel-filled {
+  color: #f4ce14;
+  top: -20px;
+  left: -10px;
+  font-size: 1.6rem;
+}
+
+.MuiInputBase-root.MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  top: 0;
+  border: none;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root {
+  color: #777;
+}
+
 @layer utilities {
   .content-container {
     @apply w-11/12 max-w-[86rem] mx-auto;
