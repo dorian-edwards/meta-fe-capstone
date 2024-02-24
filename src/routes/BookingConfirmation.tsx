@@ -2,7 +2,6 @@ import { Link, useLocation } from 'react-router-dom'
 import ButtonPrimary from '../components/ButtonPrimary'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import dayjs from 'dayjs'
-import { useEffect } from 'react'
 
 export default function BookingConfirmation({
   setBooked,
@@ -55,7 +54,11 @@ export default function BookingConfirmation({
         <em>(012) 345-6789</em>
       </a>
       <Link to='/'>
-        <ButtonPrimary type='button' sx={{ margin: '5rem auto 2.5rem auto' }}>
+        <ButtonPrimary
+          type='button'
+          sx={{ margin: '5rem auto 2.5rem auto' }}
+          onClick={() => setBooked(false)}
+        >
           Return Home
         </ButtonPrimary>
       </Link>
