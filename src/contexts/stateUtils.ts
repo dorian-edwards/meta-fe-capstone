@@ -96,6 +96,10 @@ export interface Payload {
   time?: string
   guests?: number
   occasion?: string
+  firstName?: string
+  lastName?: string
+  email?: string
+  telephone?: string
 }
 
 export function validatePhoneNumber(tel: string): string {

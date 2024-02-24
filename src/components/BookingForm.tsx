@@ -123,7 +123,7 @@ export default function BookingForm({
     const copy = structuredClone(formData)
     setFormData({
       ...copy,
-      [section]: { ...copy[section], [property]: value },
+      [section]: { ...copy[section as keyof FormData], [property]: value },
     })
   }
 

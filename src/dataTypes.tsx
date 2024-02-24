@@ -69,8 +69,23 @@ export interface PartySizeSelectorProps {
   setGuests: React.Dispatch<React.SetStateAction<number>>
 }
 
+// export interface FormData {
+//   [key: string]: { [key: string]: string }
+// }
+
 export interface FormData {
-  [key: string]: { [key: string]: string }
+  reservation: {
+    date: string
+    time: string
+    guests: string
+    occasion: string
+  }
+  contact: {
+    firstName: string
+    lastName: string
+    email: string
+    telephone: string
+  }
 }
 
 export interface Response {

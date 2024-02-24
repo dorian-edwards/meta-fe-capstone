@@ -1,7 +1,22 @@
 import TextField from '@mui/material/TextField/TextField'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline'
+import AlarmOnIcon from '@mui/icons-material/AlarmOn'
 import { FormData } from '../dataTypes'
 import { ContactErrors } from './BookingForm'
 import { validateEmail, validatePhoneNumber } from '../contexts/stateUtils'
+import { styled } from '@mui/material'
+import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize'
+import dayjs from 'dayjs'
+import Cake from '../assets/icons/Cake'
+import Glasses from '../assets/icons/Glasses'
+import Cap from '../assets/icons/Cap'
+
+const icons: { [key: string]: JSX.Element } = {
+  Anniversary: <Glasses fill='#FFF' />,
+  Birthday: <Cake fill='#FFF' />,
+  Graduation: <Cap fill='#FFF' />,
+}
 
 export default function ContactForm({
   formData,
@@ -27,7 +42,6 @@ export default function ContactForm({
     },
     '.MuiInputLabel-root': {
       fontSize: '1.6rem',
-      color: '#777',
     },
     '.MuiFormHelperText-root': {
       fontSize: '1.2rem',
@@ -40,7 +54,18 @@ export default function ContactForm({
     '.MuiOutlinedInput-notchedOutline': {
       top: 0,
     },
+    '.MuiFormLabel-root.MuiInputLabel-root.Mui-focused.Mui-error': {
+      color: '#d32f2f !important',
+    },
+    '.MuiFormLabel-root.MuiInputLabel-root.MuiFormLabel-filled.Mui-error': {
+      color: '#d32f2f !important',
+    },
   }
+
+  const dateTime = dayjs(formData.reservation.date).set(
+    'hour',
+    Number(formData.reservation.time.substr(0, 2))
+  )
 
   return (
     <>
@@ -165,7 +190,7 @@ export default function ContactForm({
         type='tel'
         variant='outlined'
         fullWidth
-        value={formData.contact.phone}
+        value={formData.contact.telephone}
         onChange={(e) => {
           updateForm('contact', 'telephone', e.target.value)
           try {
@@ -205,6 +230,82 @@ export default function ContactForm({
         error={contactErrors.telephone.error}
         helperText={contactErrors.telephone.message}
       />
+      <div className='reservation-details mb-[5rem]'>
+        <h3 className='block text-primary-yellow mb-[1rem] text-[1.2rem]'>
+          Reservation Details
+        </h3>
+        <div className='reservation-details-wrapper grid grid-cols-2 gap-y-6 mb-[1rem]'>
+          <div className='reservation-date text-white text-[2rem]'>
+            <CalendarMonthIcon
+              sx={{ color: '#FFF', marginRight: '0.5rem', fontSize: '3rem' }}
+            />{' '}
+            {dateTime.format('ddd, MMM D')}
+          </div>
+          <div className='reservation-guests text-white text-[2rem]'>
+            <PeopleOutlineIcon
+              sx={{ color: '#FFF', marginRight: '0.5rem', fontSize: '3rem' }}
+            />{' '}
+            {formData.reservation.guests}
+          </div>
+          <div className='reservation-time text-white text-[2rem]'>
+            <AlarmOnIcon
+              sx={{ color: '#FFF', marginRight: '0.5rem', fontSize: '3rem' }}
+            />{' '}
+            {dateTime.format('h:mm [pm]')}
+          </div>
+          {formData.reservation.occasion ? (
+            <div className='reservation-time text-white text-[2rem] flex items-center gap-x-4'>
+              {icons[formData.reservation.occasion]}
+              {formData.reservation.occasion}
+            </div>
+          ) : null}
+        </div>
+        <div
+          className='h-[1px] bg-[linear-gradient(to_right,_#fff,#495E57)] mb-[1rem] w-[85%]'
+          role='separator'
+          aria-roledescription='decoration line for content separation'
+        />
+      </div>
+      <div>
+        <label
+          className='block text-primary-yellow mb-[1rem] text-[1.2rem]'
+          htmlFor='comment'
+        >
+          Special Requests
+        </label>
+        <TextareaAutosize minRows={10} placeholder='Comment' id='comment' />
+      </div>
     </>
   )
 }
+
+const TextareaAutosize = styled(BaseTextareaAutosize)(
+  () => `
+  box-sizing: border-box;
+  width: 100%;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 4px;
+  resize: none;
+  margin-bottom: 5rem;
+  color: #000;
+  background: #EDEFEE;
+
+  &:hover {
+    border-color: #F4CE14;
+  }
+
+  &:focus {
+    border-color: #F4CE14;
+    box-shadow: 0 0 0 2px #F4CE14;
+  }
+
+  // firefox
+  &:focus-visible {
+    outline: 0;
+  }
+`
+)

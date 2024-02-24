@@ -32,7 +32,6 @@ export default function App() {
                 path='/booking'
                 element={<BookingPage setBooked={setBooked} />}
               />
-              {/* <Route path='/confirmation' element={<BookingConfirmation />} /> */}
               <Route
                 path='/confirmation'
                 element={

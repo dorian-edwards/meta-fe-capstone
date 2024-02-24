@@ -22,7 +22,11 @@ export default function useSubmit() {
       if (random <= 0.25) throw new Error('Oops something went wrong 🤪')
       dispatch({
         type: 'reserve_time',
-        payload: { ...data },
+        payload: {
+          ...data.reservation,
+          ...data.contact,
+          date: data.reservation.date,
+        },
       })
       setResponse({
         status: 'success',
