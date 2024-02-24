@@ -135,7 +135,7 @@ export default function BookingForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <section className='reservation-details pt-[10rem] bg-[linear-gradient(to_right,_rgba(29,38,35,0.85),rgba(29,38,35,0.85)),url(./images/lemon-large.jpg)] bg-cover bg-no-repeat bg-center'>
+      <section className='reservation-details pt-[10rem] bg-[linear-gradient(to_right,_rgba(29,38,35,0.85),rgba(29,38,35,0.85)),url(/images/lemon-large.jpg)] bg-cover bg-no-repeat bg-center'>
         <div className='content-container'>
           <TitleText sx={{ marginBottom: '4rem' }}>
             {step === 1 ? 'Reservations' : 'Contact'}
