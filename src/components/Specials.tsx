@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { MenuItem } from '../dataTypes'
 import ButtonPrimary from './ButtonPrimary'
 import MenuItemCard from './MenuItemCard'
@@ -40,7 +41,9 @@ export default function Specials() {
           <h2 className='specials-mobile text-title text-center'>Specials</h2>
           <div className='specials flex justify-between max-[559px]:hidden'>
             <h2 className='text-title'>This week's specials!</h2>
-            <ButtonPrimary>Online Menu</ButtonPrimary>
+            <Link to='/menu'>
+              <ButtonPrimary>Online Menu</ButtonPrimary>
+            </Link>
           </div>
         </div>
         <ul className='specials-list flex flex-col gap-y-[4rem] gap-x-[2rem]'>

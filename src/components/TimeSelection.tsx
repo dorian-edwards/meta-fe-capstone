@@ -5,54 +5,52 @@ import {
   Select,
   MenuItem,
   styled,
+  FormHelperText,
 } from '@mui/material'
-import Cake from '../assets/icons/Cake'
-import Glasses from '../assets/icons/Glasses'
-import Cap from '../assets/icons/Cap'
+import { useBookingDataContext } from '../contexts/stateUtils'
 
-export default function OccasionSelector({
+export default function TimeSelection({
   value,
   setValue,
+  date,
 }: {
   value: string
   setValue: (section: string, property: string, value: string) => void
+
+  date: string
 }) {
+  const { selectedDateAvailableBookings } = useBookingDataContext()
+
   return (
     <FormControl fullWidth sx={{ mb: '3.6rem' }}>
       <InputLabel
-        id='demo-simple-select-label'
+        id='time-label'
         sx={{ fontSize: 16, padding: '0 1rem', color: '#000' }}
       >
-        Occasion
+        Select Time
       </InputLabel>
       <Select
-        labelId='demo-simple-select-label'
-        id='demo-simple-select'
+        labelId='time-label'
+        id='time-select'
+        label='Time'
         value={value}
-        label='Occasion'
-        onChange={(e) => setValue('reservation', 'occasion', e.target.value)}
         input={<BootstrapInput />}
         inputProps={{ IconComponent: () => null }}
+        onChange={(e) => setValue('reservation', 'time', e.target.value)}
+        required
+        disabled={selectedDateAvailableBookings.length === 0}
       >
-        <MenuItem value='' sx={{ fontSize: '1.6rem' }}>
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={'Anniversary'} sx={{ fontSize: '1.6rem' }}>
-          <span className='flex items-center gap-x-[1rem]'>
-            Anniversary <Glasses />
-          </span>
-        </MenuItem>
-        <MenuItem value={'Birthday'} sx={{ fontSize: '1.6rem' }}>
-          <span className='flex items-center gap-x-[1rem]'>
-            Birthday <Cake />
-          </span>
-        </MenuItem>
-        <MenuItem value={'Graduation'} sx={{ fontSize: '1.6rem' }}>
-          <span className='flex items-center gap-x-[1rem]'>
-            Graduation <Cap />
-          </span>
-        </MenuItem>
+        {selectedDateAvailableBookings.map((time) => (
+          <MenuItem key={time} value={time} sx={{ fontSize: '1.4rem' }}>
+            {time}
+          </MenuItem>
+        ))}
       </Select>
+      <FormHelperText sx={{ color: '#F00', fontSize: '1.2rem' }}>
+        {date && selectedDateAvailableBookings.length === 0
+          ? 'No reservations available'
+          : ' '}
+      </FormHelperText>
     </FormControl>
   )
 }
@@ -67,7 +65,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     backgroundColor: '#EDEFEE',
     border: '1px solid #ced4da',
     fontSize: 16,
-    padding: '16px 26px 15px 12px',
+    padding: '15.5px 26px 15.5px 12px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Roboto font.
     fontFamily: [
