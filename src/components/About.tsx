@@ -22,8 +22,8 @@ export default function About() {
         </div>
         <div className='about-images basis-1/2 min-[840px]:flex justify-center items-center hidden'>
           <div className='img-frame w-[44.4rem] h-[44.4rem] relative'>
-            <div className='img-wrapper w-[27.6rem] h-[33.8rem] absolute top-0 right-0 bg-[url(./images/marissa-grootes.jpg)] bg-cover bg-no-repeat bg-center' />
-            <div className='img-wrapper w-[27.6rem] h-[33.8rem] absolute bottom-0 left-0  bg-[url(./images/MNAB.jpg)] bg-cover bg-no-repeat bg-center' />
+            <div className='img-wrapper w-[27.6rem] h-[33.8rem] absolute top-0 right-0 bg-[url(/images/marissa-grootes.jpg)] bg-cover bg-no-repeat bg-center' />
+            <div className='img-wrapper w-[27.6rem] h-[33.8rem] absolute bottom-0 left-0  bg-[url(/images/MNAB.jpg)] bg-cover bg-no-repeat bg-center' />
           </div>
         </div>
       </div>
