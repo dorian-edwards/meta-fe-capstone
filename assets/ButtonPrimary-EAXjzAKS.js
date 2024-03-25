@@ -1,0 +1,1 @@
+import{j as a}from"./index-kTBbnuNW.js";function o({children:t,type:e,sx:r,disabled:l,onClick:s}){return a.jsx("button",{className:"text-lead bg-primary-yellow rounded-3xl py-[1rem] px-[2rem] disabled:bg-highlight-light disabled:text-[#666]",type:e||"button",style:r,disabled:l||!1,onClick:s,children:t})}export{o as B};

@@ -1,0 +1,1 @@
+import{j as e}from"./index-kTBbnuNW.js";import{T as t}from"./TitleText-pHLtfb_A.js";function i(){return e.jsx("h1",{className:"h-[100vh] flex justify-center items-center",children:e.jsx(t,{sx:{color:"black"},children:"Loading"})})}export{i as default};
